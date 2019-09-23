@@ -41,7 +41,7 @@ public class Shop {
         public static void main(String[] args) {
             Shop shop = new Shop();
 
-            readFile();
+            readFile(shop);
 
             String menu = "1. Add product\n2. Show product\n3. Show rental price\n4. Show all produts\n5. Lend product\n6. Check Availability\n\n0. Quit";
             int choice = -1;
@@ -199,34 +199,6 @@ public class Shop {
             }
         }
 
-        public static void readFile() {
-            Shop shop = new Shop();
-            String file = "shop.txt";
-            String line = null;
-
-            try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-                while ((line = bufferedReader.readLine()) != null) {
-                    System.out.println(line);
-                    if (line.equals('M' | 'G' | 'C')) {
-                        shop.productTypes.add(line);
-                    } else if (line.matches("-?\\d+(\\.\\d+)?")) {
-                        shop.productIds.add(Integer.parseInt(line));
-                    } else {
-                        shop.productTitles.add(line);
-                    }
-                }
-
-                bufferedReader.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("File doesn't exist!");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         public static void writeFile(HashMap<Integer, ArrayList<String>> products) {
             String file = "shop.txt";
 
@@ -245,6 +217,36 @@ public class Shop {
 
                 bufferedWriter.close();
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void readFile(Shop shop) {
+            String file = "shop.txt";
+            String line = null;
+
+            try {
+                FileReader fileReader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (line.equals("M") || line.equals("G") || line.equals("C")) {
+                        shop.productTypes.add(line);
+                    } else if (line.matches("-?\\d+(\\.\\d+)?")) {
+                        shop.productIds.add(Integer.parseInt(line));
+                    } else {
+                        shop.productTitles.add(line);
+                    }
+                }
+
+                System.out.println("ID's: " + shop.productIds);
+                System.out.println("Types: " + shop.productTypes);
+                System.out.println("Titles: " + shop.productTitles);
+
+                bufferedReader.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("File doesn't exist!");
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
