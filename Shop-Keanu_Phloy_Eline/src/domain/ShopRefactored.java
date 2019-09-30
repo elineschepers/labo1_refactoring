@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class ShopRefactored {
 
     private String name;
-    private Map<Integer,Product> products;
+    private Map<String,Product> products;
 
     public ShopRefactored(String name) {
         products=new TreeMap<>();
