@@ -19,7 +19,9 @@ public class Context {
             int choice = -1;
             while (choice != 0) {
                 String choiceString = JOptionPane.showInputDialog(optie);
-                choice = Integer.parseInt(choiceString);
+                if( choiceString != null) {
+                    choice = Integer.parseInt(choiceString);
+                }
                 if (choice == 1) {
                     int number = Integer.parseInt(JOptionPane.showInputDialog("Nummer?"));
                     c.setNumber(number);
