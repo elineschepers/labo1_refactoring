@@ -19,11 +19,6 @@ public class Mirroring implements Cypher {
     @Override
     public String decode(String s)
     {
-        String res="";
-        for(int i=0;i<s.length();i++)
-        {
-            res+=s.toCharArray()[i];
-        }
-        return res;
+        return encode(s);
     }
 }

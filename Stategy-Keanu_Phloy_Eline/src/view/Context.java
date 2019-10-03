@@ -26,20 +26,15 @@ public class Context {
                     String result = c.encode(text);
                     JOptionPane.showMessageDialog(null, result);
                 }
-            }
-            }
-            else if (keuze.equals("2")) {
-                int choice = -1;
-                while (choice != 0) {
-                    String choiceString = JOptionPane.showInputDialog(optie);
-                    choice = Integer.parseInt(choiceString);
-                    if (choice == 2) {
+                if (choice == 2) {
 
                         String result = m.encode(text);
                         JOptionPane.showMessageDialog(null, result);
                     }
-                }
-        } else if (keuze.equals("2")) {
+
+            }
+            }
+         else if (keuze.equals("2")) {
             int choice = -1;
             while (choice != 0) {
                 String choiceString = JOptionPane.showInputDialog(optie);
@@ -48,6 +43,11 @@ public class Context {
                     int number = Integer.parseInt(JOptionPane.showInputDialog("Nummer?"));
                     c.setNumber(number);
                     String result = c.decode(text);
+                    JOptionPane.showMessageDialog(null, result);
+                }
+                if (choice == 2) {
+
+                    String result = m.decode(text);
                     JOptionPane.showMessageDialog(null, result);
                 }
             }
