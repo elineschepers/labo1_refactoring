@@ -2,8 +2,10 @@
   <component name="FileTypeManager" version="17">
     <extensionMap>
       <mapping pattern="addGerecht" type="JSP" />
-      <mapping pattern="docker_file" type="PLAIN_TEXT" />
-      <mapping pattern="addGerecht.jsp" type="PLAIN_TEXT" />
+      <mapping pattern="teehee" type="JSP" />
+      <mapping pattern="deleteGerecht" type="JSP" />
+      <mapping pattern="gerechten" type="JSP" />
+      <mapping pattern="dockerfile" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
