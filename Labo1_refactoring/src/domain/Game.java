@@ -7,8 +7,8 @@ public class Game extends Product {
     {
         super(id,title);
 //test
-    }
-//nog is
+ // phloy is uw meester  }
+
     public double getPrijs(int days)
     {
         return days*3;
