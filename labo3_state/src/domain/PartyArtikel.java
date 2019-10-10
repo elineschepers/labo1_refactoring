@@ -1,3 +1,5 @@
+package domain;
+
 public class PartyArtikel {
     private String name;
     private double prijs;
@@ -5,17 +7,18 @@ public class PartyArtikel {
     State deletedState;
     State loanableState;
     State loanedState;
-
+    PartyMaterialRental partyMaterialRental;
     State state = loanableState;
     public PartyArtikel(String n,double p)
     {
-        damagedState = new DamagedState();
-        deletedState = new DeletedState();
-        loanableState = new LoanableState();
-        loanedState = new LoanedState();
+        damagedState = new DamagedState(getRental());
+        deletedState = new DeletedState(getRental());
+        loanableState = new LoanableState(getRental());
+        loanedState = new LoanedState(getRental());
         this.name=n;
         this.prijs=p;
         this.state=loanableState;
+
     }
     public State getState()
     {
@@ -26,6 +29,11 @@ public class PartyArtikel {
         return prijs;
     }
 
+    public void setRental(PartyMaterialRental rental)
+    {
+        this.partyMaterialRental=rental;
+    }
+    public PartyMaterialRental getRental(){return partyMaterialRental;}
     public void setState(State state)
     {
      this.state=state;
@@ -46,4 +54,9 @@ public class PartyArtikel {
         return loanedState;
     }
 
+    @Override
+    public String toString()
+    {
+        return "\nartikel: "+name+"\nprijs: "+prijs;
+    }
 }
