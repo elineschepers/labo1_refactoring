@@ -24,6 +24,7 @@ public class PartyArtikel {
     {
         return state;
     }
+    public String getName() { return name; }
     public double getPrijs()
     {
         return prijs;
