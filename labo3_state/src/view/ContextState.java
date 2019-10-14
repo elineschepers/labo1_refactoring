@@ -55,14 +55,19 @@ public class ContextState {
         String terugbrengingNaam = JOptionPane.showInputDialog("Welk van volgende artikels brengt U terug?" + c.uitgeleend);
 
         for (PartyArtikel a: c.artikels) {
-            if (a.getName().equals(terugbrengingNaam) && c.uitgeleend.contains(a)) {
+            System.out.println("aanwezig in for");
+            if (a.getName().equals(terugbrengingNaam)) {
+                System.out.println("aanwezig if");
                 c.aanwezig.add(a);
             }
         }
 
         if (c.uitgeleend.size() != 0) {
-            for (PartyArtikel l : c.aanwezig) {
-                if (c.uitgeleend.contains(l)) {
+            System.out.println("uitgeleend voor for");
+            for (PartyArtikel l : c.artikels) {
+                System.out.println("uitgeleend in for");
+                if (l.getName().equals(terugbrengingNaam)) {
+                    System.out.println("uitgeleend if");
                     c.uitgeleend.remove(l);
                 }
             }
