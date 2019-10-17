@@ -1,10 +1,17 @@
 package domain;
 
-public class Dice {
-    private int eyes;
+import java.util.Random;
 
-    public Dice(int eyes) {
-        this.eyes = eyes;
+public class Dice {
+    Random random;
+
+    public Dice() {
+        random = new Random();
+    }
+
+    public int RollDice() {
+        int randomEyes = random.nextInt(7);
+        return randomEyes;
 
     }
 }
