@@ -18,7 +18,7 @@ public class Product {
         if(this instanceof Movie){
 
             return this.getPrice(days);
-        } else if(this instanceof  Game){
+        } else if(this instanceof DiceGame){
             return this.getPrice(days);
         }
         return 0;

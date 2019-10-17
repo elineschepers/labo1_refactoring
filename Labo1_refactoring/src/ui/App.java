@@ -1,6 +1,6 @@
 package ui;
 
-import domain.Game;
+import domain.DiceGame;
 import domain.Product;
 import domain.Shop;
 import domain.ShopRefactored;
@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) {
 
         ShopRefactored s1 = new ShopRefactored("winkel");
-        Product p1 = new Game("CD","a1");
+        Product p1 = new DiceGame("CD","a1");
         Shop shop = new Shop();
 
         String menu = "1. Add product\n2. Show product\n3. Show rental price\n\n0. Quit";
