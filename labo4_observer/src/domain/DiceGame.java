@@ -23,28 +23,44 @@ public class DiceGame {
     }
 
     public void StartGame() {
+        int rondenr = 1;
+
+        //While loop voor aantal rondes vanaf hier
+
         int scoreP1 = d1.RollDice() + d2.RollDice();
-        System.out.println(scoreP1);
+        System.out.println("Score P1: " + scoreP1);
 
         int scoreP2 = d1.RollDice() + d2.RollDice();
-        System.out.println(scoreP2);
+        System.out.println("Score P2: " + scoreP2);
 
         int scoreP3 = d1.RollDice() + d2.RollDice();
-        System.out.println(scoreP3);
+        System.out.println("Score P3: " + scoreP3);
 
-
-        //IF fixen
         if (scoreP1 > scoreP2) {
-            highestScore = scoreP1;
-            winnerRound = p1;
-        } else if (scoreP1 < scoreP2) {
-            highestScore = scoreP2;
-            winnerRound = p2;
+            if (scoreP1 > scoreP3) {
+                highestScore = scoreP1;
+                winnerRound = p1;
+                System.out.println("Speler 1 wint deze ronde!");
+            } else {
+                highestScore = scoreP3;
+                winnerRound = p3;
+                System.out.println("Speler 3 wint deze ronde!");
+            }
+        } else {
+            if (scoreP2 > scoreP3) {
+                highestScore = scoreP2;
+                winnerRound = p2;
+                System.out.println("Speler 2 wint deze ronde!");
+            } else {
+                highestScore = scoreP3;
+                winnerRound = p3;
+                System.out.println("Speler 3 wint deze ronde!");
+            }
         }
 
-        if (scoreP3 > highestScore) {
-            highestScore = scoreP3;
-            winnerRound = p3;
-        }
+        rounds.put(rondenr, winnerRound);
+        rondenr +=1;
+
+        //Tot hier
     }
 }
