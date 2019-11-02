@@ -1,5 +1,6 @@
 package view;
 
+import domain.Dice;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -19,12 +20,17 @@ public class PlayerView  {
 	
 	public PlayerView(int spelerNummer){
 		this.spelerNummer = spelerNummer;
+
 		diceLabel = new Label("beurt 1: ");
+
 		playButton = new Button("Werp dobbelstenen");
 		playButton.setOnAction(new ThrowDicesHandler());
 		playButton.setDisable(true);
+
 		messageLabel = new Label("Spel nog niet gestart");
+
 		layoutComponents();
+
 		stage.setScene(playerScene);
 		stage.setTitle("Speler "+spelerNummer);
 		stage.setResizable(false);		
@@ -48,7 +54,9 @@ public class PlayerView  {
 	class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            
+			Dice d1 = new Dice();
+			Dice d2 = new Dice();
+
         }
     }
 }
