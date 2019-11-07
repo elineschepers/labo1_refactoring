@@ -8,20 +8,26 @@ public class DiceGame {
     private Dice d1, d2;
     private Map<Integer, Player> rounds;
     private int round;
+    // TODO: 7/11/2019  //soeler aan de buurt
     private Player winnerTotal, winnerRound, p1, p2, p3;
     private int highestScore;
 
     public DiceGame() {
         rounds = new HashMap<>();
-        p1 = new Player();
-        p2 = new Player();
-        p3 = new Player();
-        winnerRound = new Player();
-        winnerTotal = new Player();
+        p1 = new Player("u1");
+        p2 = new Player("u2");
+        p3 = new Player("u3");
+        winnerRound = new Player("u4");
+        winnerTotal = new Player("u5");
         d1 = new Dice();
         d2 = new Dice();
     }
 
+    public void verwerkworp()
+    {
+        // TODO: 7/11/2019  //gekregen getallen van werp
+        // TODO: 7/11/2019  //notify observers
+    }
     public void StartGame() {
         int rondenr = 1;
 
