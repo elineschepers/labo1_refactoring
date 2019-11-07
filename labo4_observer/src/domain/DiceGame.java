@@ -14,11 +14,11 @@ public class DiceGame {
 
     public DiceGame() {
         rounds = new HashMap<>();
-        p1 = new Player("u1");
-        p2 = new Player("u2");
-        p3 = new Player("u3");
-        winnerRound = new Player("u4");
-        winnerTotal = new Player("u5");
+        p1 = new Player();
+        p2 = new Player();
+        p3 = new Player();
+        winnerRound = new Player();
+        winnerTotal = new Player();
         d1 = new Dice();
         d2 = new Dice();
     }
