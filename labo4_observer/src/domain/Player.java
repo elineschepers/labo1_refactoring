@@ -9,8 +9,9 @@ public class Player implements Observable {
     private int huidigeBeurt;
     private int totaalResultaat;
     private ArrayList<Observer> observers;
+    private String naam;
 
-    public Player() {
+    public Player(String naam, int spelersnummer) {
         setSpelersnummer(spelersnummer);
         setAantalBeurtenGespeeld(aantalBeurtenGespeeld);
         setVorigeBeurt(vorigeBeurt);

@@ -20,7 +20,7 @@ public class PlayerView implements Observer {
 	private Button playButton;
 	private Label messageLabel; 
 	
-	private int spelerNummer;
+	private int spelerNummer, aantalBeurtenGespeeld, vorigeResultaat, huidigeResultaat, totaalResultaat;
 	
 	public PlayerView(int spelerNummer){
 		diceGame= new DiceGame();
@@ -59,10 +59,17 @@ public class PlayerView implements Observer {
 
 	@Override
 	public void update(int spelerNummer, int aantalBeurtenGespeeld, int vorigeResultaat, int huidigeResultaat, int totaalResultaat) {
-
-
+		this.spelerNummer = spelerNummer;
+		this.aantalBeurtenGespeeld = aantalBeurtenGespeeld;
+		this.vorigeResultaat = vorigeResultaat;
+		this.huidigeResultaat = huidigeResultaat;
+		this.totaalResultaat = totaalResultaat;
 	}
 
+	public int berekenPunten(){
+		//todo
+		return 0;
+	}
 	class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {

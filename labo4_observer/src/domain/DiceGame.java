@@ -1,10 +1,11 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DiceGame {
-    private Player[] players;
+    private ArrayList<Player> players;
     private Dice d1, d2;
     private Map<Integer, Player> rounds;
     private int round;
@@ -14,15 +15,23 @@ public class DiceGame {
 
     public DiceGame() {
         rounds = new HashMap<>();
+        players = new ArrayList<>();
+/*
         p1 = new Player();
         p2 = new Player();
         p3 = new Player();
+
+
         winnerRound = new Player();
         winnerTotal = new Player();
+*/
         d1 = new Dice();
         d2 = new Dice();
     }
 
+    public void addPlayerToGame(Player p){
+        players.add(p);
+    }
     public void verwerkworp()
     {
         // TODO: 7/11/2019  //gekregen getallen van werp

@@ -13,27 +13,16 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		DiceGame dg = new DiceGame();
 		dg.StartGame();
-<<<<<<< Updated upstream
-/*
-=======
->>>>>>> Stashed changes
-		new ScoreView();
 
-			new ScoreView();
+		Player p1 = new Player("Eline", 1);
+		Player p2 = new Player("Keanu", 2);
+		Player p3 = new Player("Phloy", 3);
 
-		PlayerView pv3 = new PlayerView(3);
-		PlayerView pv2 = new PlayerView(2);
-		PlayerView pv1 = new PlayerView(1);		
-		pv1.isAanBeurt(true);
-<<<<<<< Updated upstream
-*/
-=======
+		dg.addPlayerToGame(p1);
+		dg.addPlayerToGame(p2);
+		dg.addPlayerToGame(p3);
 
-
-		dg.StartGame();
-
-
->>>>>>> Stashed changes
+		//p1.addObserver();
 	}
 	
 	public static void main(String[] args) {
