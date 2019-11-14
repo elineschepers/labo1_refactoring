@@ -69,7 +69,11 @@ public class Player implements Observable {
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
             Observer observer = (Observer) observers.get(i);
-            observer.update();
+            observer.update(spelersnummer,
+                            aantalBeurtenGespeeld,
+                            vorigeBeurt,
+                            huidigeBeurt,
+                            totaalResultaat);
         }
     }
 

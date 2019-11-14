@@ -58,7 +58,7 @@ public class PlayerView implements Observer {
 	}
 
 	@Override
-	public void update() {
+	public void update(int spelerNummer, int aantalBeurtenGespeeld, int vorigeResultaat, int huidigeResultaat, int totaalResultaat) {
 
 
 	}

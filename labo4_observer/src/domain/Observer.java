@@ -1,7 +1,9 @@
 package domain;
 
 public interface Observer {
-
-    void update();
-
+    void update(int spelersnummer,
+                int aantalBeurtenGespeeld,
+                int vorigeResultaat,
+                int huidigeResultaat,
+                int totaalResultaat);
 }
