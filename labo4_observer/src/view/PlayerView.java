@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 
 public class PlayerView implements Observer {
 	private Stage stage = new Stage();
+	private DiceGame dicegame;
 
-	private DiceGame diceGame; //todo
 	private Scene playerScene;
 	private Label diceLabel;
 	private Button playButton;
@@ -22,27 +22,37 @@ public class PlayerView implements Observer {
 	
 	private int spelerNummer, aantalBeurtenGespeeld, vorigeResultaat, huidigeResultaat, totaalResultaat;
 	
-	public PlayerView(int spelerNummer){
-		diceGame = new DiceGame();
-
-		this.spelerNummer = spelerNummer;
-
+	public PlayerView(DiceGame dg, int nr){
 		diceLabel = new Label("Beurt 1: ");
 
 		playButton = new Button("Werp dobbelstenen");
+		setItems(dg, nr);
 		playButton.setOnAction(new ThrowDicesHandler());
-		playButton.setDisable(true);
+		playButton.setDisable(false);
 
 		messageLabel = new Label("Spel nog niet gestart");
 
 		layoutComponents();
 
 		stage.setScene(playerScene);
-		stage.setTitle("Speler "+spelerNummer);
+		stage.setTitle("Speler "+ spelerNummer);
 		stage.setResizable(false);		
 		stage.setX(100+(spelerNummer-1) * 350);
 		stage.setY(200);
 		stage.show();
+	}
+
+	public void setItems(DiceGame dg, int nr) {
+		dicegame = dg;
+		spelerNummer = nr;
+	}
+
+	public int getSpelersNr() {
+		return spelerNummer;
+	}
+
+	public DiceGame getGame() {
+		return dicegame;
 	}
 
 	private void layoutComponents() {
@@ -69,7 +79,7 @@ public class PlayerView implements Observer {
 	class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-        	diceGame.verwerkWorp(spelerNummer);
+			getGame().verwerkWorp(getGame().getSpelerBySpelersnr(getSpelersNr()));
         }
     }
 }

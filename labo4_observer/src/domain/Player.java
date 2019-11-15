@@ -87,7 +87,4 @@ public class Player implements Observable {
         notifyObservers();
     }
 
-    public Player getSpelerBySpelersnr(int spelersnr) {
-
-    }
 }

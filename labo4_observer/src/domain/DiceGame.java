@@ -24,6 +24,15 @@ public class DiceGame {
         players.add(p);
     }
 
+    public Player getSpelerBySpelersnr(int spelersnr) {
+        for (Player p: players) {
+            if (p.getSpelersnummer() == spelersnr) {
+                return p;
+            }
+        }
+        return null;
+    }
+
     public int berekenPunten(Player p) {
         int rol1 = d1.RollDice();
         int rol2 = d2.RollDice();
@@ -31,18 +40,28 @@ public class DiceGame {
 
         if (rol1 == rol2) {
             score = (rol1 + rol2) * 2;
-        } else if ((rol1 + rol2) == p.getVorigeBeurt()) {
-            score = (rol1 + rol2) + 5;
-        } else {
+        } /*else if (p.getVorigeBeurt() != 0) {
+            if ((rol1 + rol2) == p.getVorigeBeurt()) {
+                score = (rol1 + rol2) + 5;
+            }
+        } */else {
             score = rol1 + rol2;
         }
         return score;
     }
 
     public void verwerkWorp(Player p) {
-        p.setHuidigeBeurt(berekenPunten(p));
+        int worp = berekenPunten(p);
+
+        p.setHuidigeBeurt(worp);
         p.setTotaalResultaat(p.getTotaalResultaat() + p.getHuidigeBeurt());
         p.setAantalBeurtenGespeeld(p.getAantalBeurtenGespeeld() + 1);
         p.notifyObservers();
+
+        System.out.println("Worp: " + worp);
+        System.out.println("Spelers nummer: " + p.getSpelersnummer());
+        System.out.println("Deze Beurt: " + p.getHuidigeBeurt());
+        System.out.println("Voorlopig Totaal: " + p.getTotaalResultaat());
+        System.out.println("Aantal beurten gespeeld: " + p.getAantalBeurtenGespeeld());
     }
 }
