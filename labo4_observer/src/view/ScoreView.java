@@ -1,14 +1,17 @@
 package view;
 
+import domain.Observer;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ScoreView {
+public class ScoreView implements Observer {
 	private Stage stage = new Stage();
 	private Scene scoreScene;
-	private Label scoreLabel; 
+	private Label scoreLabel;
+
+	private int spelerNummer, aantalBeurtenGespeeld, vorigeResultaat, huidigeResultaat, totaalResultaat;
 		
 	public ScoreView(){
 		scoreLabel = new Label();
@@ -31,6 +34,15 @@ public class ScoreView {
 	
 	private void voegScoreLijnToe(String scoreLijn){
 		scoreLabel.setText(scoreLabel.getText()+"\n"+scoreLijn);
+	}
+
+	@Override
+	public void update(int spelerNummer, int aantalBeurtenGespeeld, int vorigeResultaat, int huidigeResultaat, int totaalResultaat) {
+		this.spelerNummer = spelerNummer;
+		this.aantalBeurtenGespeeld = aantalBeurtenGespeeld;
+		this.vorigeResultaat = vorigeResultaat;
+		this.huidigeResultaat = huidigeResultaat;
+		this.totaalResultaat = totaalResultaat;
 	}
 	
 }

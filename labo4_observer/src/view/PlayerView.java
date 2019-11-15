@@ -23,11 +23,11 @@ public class PlayerView implements Observer {
 	private int spelerNummer, aantalBeurtenGespeeld, vorigeResultaat, huidigeResultaat, totaalResultaat;
 	
 	public PlayerView(int spelerNummer){
-		diceGame= new DiceGame();
+		diceGame = new DiceGame();
 
 		this.spelerNummer = spelerNummer;
 
-		diceLabel = new Label("beurt 1: ");
+		diceLabel = new Label("Beurt 1: ");
 
 		playButton = new Button("Werp dobbelstenen");
 		playButton.setOnAction(new ThrowDicesHandler());
@@ -66,16 +66,10 @@ public class PlayerView implements Observer {
 		this.totaalResultaat = totaalResultaat;
 	}
 
-	public int berekenPunten(){
-		//todo
-		return 0;
-	}
 	class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-			Dice d1 = new Dice();
-			Dice d2 = new Dice();
-
+        	diceGame.verwerkWorp(spelerNummer);
         }
     }
 }

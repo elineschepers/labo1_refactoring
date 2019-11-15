@@ -9,22 +9,13 @@ public class DiceGame {
     private Dice d1, d2;
     private Map<Integer, Player> rounds;
     private int round;
-    // TODO: 7/11/2019  //soeler aan de buurt
-    private Player winnerTotal, winnerRound, p1, p2, p3;
+    private Player winnerRound;
     private int highestScore;
 
     public DiceGame() {
         rounds = new HashMap<>();
         players = new ArrayList<>();
-/*
-        p1 = new Player();
-        p2 = new Player();
-        p3 = new Player();
 
-
-        winnerRound = new Player();
-        winnerTotal = new Player();
-*/
         d1 = new Dice();
         d2 = new Dice();
     }
@@ -32,50 +23,26 @@ public class DiceGame {
     public void addPlayerToGame(Player p){
         players.add(p);
     }
-    public void verwerkworp()
-    {
-        // TODO: 7/11/2019  //gekregen getallen van werp
-        // TODO: 7/11/2019  //notify observers
-    }
-    public void StartGame() {
-        int rondenr = 1;
 
-        //While loop voor aantal rondes vanaf hier
+    public int berekenPunten(Player p) {
+        int rol1 = d1.RollDice();
+        int rol2 = d2.RollDice();
+        int score = 0;
 
-        int scoreP1 = d1.RollDice() + d2.RollDice();
-        System.out.println("Score P1: " + scoreP1);
-
-        int scoreP2 = d1.RollDice() + d2.RollDice();
-        System.out.println("Score P2: " + scoreP2);
-
-        int scoreP3 = d1.RollDice() + d2.RollDice();
-        System.out.println("Score P3: " + scoreP3);
-
-        if (scoreP1 > scoreP2) {
-            if (scoreP1 > scoreP3) {
-                highestScore = scoreP1;
-                winnerRound = p1;
-                System.out.println("Speler 1 wint deze ronde!");
-            } else {
-                highestScore = scoreP3;
-                winnerRound = p3;
-                System.out.println("Speler 3 wint deze ronde!");
-            }
+        if (rol1 == rol2) {
+            score = (rol1 + rol2) * 2;
+        } else if ((rol1 + rol2) == p.getVorigeBeurt()) {
+            score = (rol1 + rol2) + 5;
         } else {
-            if (scoreP2 > scoreP3) {
-                highestScore = scoreP2;
-                winnerRound = p2;
-                System.out.println("Speler 2 wint deze ronde!");
-            } else {
-                highestScore = scoreP3;
-                winnerRound = p3;
-                System.out.println("Speler 3 wint deze ronde!");
-            }
+            score = rol1 + rol2;
         }
+        return score;
+    }
 
-        rounds.put(rondenr, winnerRound);
-        rondenr +=1;
-
-        //Tot hier
+    public void verwerkWorp(Player p) {
+        p.setHuidigeBeurt(berekenPunten(p));
+        p.setTotaalResultaat(p.getTotaalResultaat() + p.getHuidigeBeurt());
+        p.setAantalBeurtenGespeeld(p.getAantalBeurtenGespeeld() + 1);
+        p.notifyObservers();
     }
 }

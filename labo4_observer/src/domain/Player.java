@@ -20,6 +20,10 @@ public class Player implements Observable {
         observers = new ArrayList<Observer>();
     }
 
+    public Player() {
+
+    }
+
     //Getters
     public int getSpelersnummer() { return spelersnummer; }
 
@@ -81,5 +85,9 @@ public class Player implements Observable {
     //Andere methodes
     public void heeftGespeeld() {
         notifyObservers();
+    }
+
+    public Player getSpelerBySpelersnr(int spelersnr) {
+
     }
 }
