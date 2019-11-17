@@ -23,14 +23,35 @@ public class PlayerView implements Observer {
 	private int spelerNummer, aantalBeurtenGespeeld, vorigeResultaat, huidigeResultaat, totaalResultaat;
 	
 	public PlayerView(DiceGame dg, int nr){
-		diceLabel = new Label("Beurt 1: ");
-
+		diceLabel = new Label("Beurt " + dg.getSpelerBySpelersnr(nr).getAantalBeurtenGespeeld() + ":");
 		playButton = new Button("Werp dobbelstenen");
-		setItems(dg, nr);
-		playButton.setOnAction(new ThrowDicesHandler());
-		playButton.setDisable(false);
+		
+		/*
+		if (nr == 1 &&
+			dg.getSpelerBySpelersnr(1).getAantalBeurtenGespeeld() == dg.getSpelerBySpelersnr(2).getAantalBeurtenGespeeld() &&
+			dg.getSpelerBySpelersnr(1).getAantalBeurtenGespeeld() == dg.getSpelerBySpelersnr(3).getAantalBeurtenGespeeld()) {
+			playButton = new Button("Werp dobbelstenen");
+		} else if (nr == 2 &&
+				   dg.getSpelerBySpelersnr(2).getAantalBeurtenGespeeld() < dg.getSpelerBySpelersnr(1).getAantalBeurtenGespeeld() &&
+		 		   dg.getSpelerBySpelersnr(2).getAantalBeurtenGespeeld() == dg.getSpelerBySpelersnr(3).getAantalBeurtenGespeeld()) {
+			playButton = new Button("Werp dobbelstenen");
+		} else if (nr == 3 &&
+				   dg.getSpelerBySpelersnr(3).getAantalBeurtenGespeeld() < dg.getSpelerBySpelersnr(2).getAantalBeurtenGespeeld()) {
+			playButton = new Button("Werp dobbelstenen");
+		} else {
+			playButton = new Button("Werp dobbelstenen");
+			playButton.setDisable(true);
+		} */
 
-		messageLabel = new Label("Spel nog niet gestart");
+		setItems(dg, nr);
+
+		playButton.setOnAction(new ThrowDicesHandler());
+
+		if (vorigeResultaat == 0 && huidigeResultaat == 0 && totaalResultaat == 0) {
+			messageLabel = new Label("Spel nog niet gestart");
+		} else {
+			messageLabel = new Label("Net behaald resultaat: " + huidigeResultaat);
+		}
 
 		layoutComponents();
 
@@ -64,7 +85,7 @@ public class PlayerView implements Observer {
 	}
 	
 	public void isAanBeurt(boolean aanBeurt){
-		playButton.setDisable(!aanBeurt);		
+		playButton.setDisable(!aanBeurt);
 	}
 
 	@Override
@@ -74,12 +95,15 @@ public class PlayerView implements Observer {
 		this.vorigeResultaat = vorigeResultaat;
 		this.huidigeResultaat = huidigeResultaat;
 		this.totaalResultaat = totaalResultaat;
+
+		diceLabel.setText("Beurt " + getGame().getSpelerBySpelersnr(getSpelersNr()).getAantalBeurtenGespeeld() + ":");
+		messageLabel.setText("Score van deze worp: " + huidigeResultaat);
 	}
 
 	class ThrowDicesHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-			getGame().verwerkWorp(getGame().getSpelerBySpelersnr(getSpelersNr()));
+        	getGame().verwerkWorp(getGame().getSpelerBySpelersnr(getSpelersNr()));
         }
     }
 }

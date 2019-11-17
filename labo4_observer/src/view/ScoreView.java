@@ -11,6 +11,7 @@ public class ScoreView implements Observer {
 	private Scene scoreScene;
 	private Label scoreLabel;
 
+	private int spelernr1Tot, spelernr2Tot;
 	private int spelerNummer, aantalBeurtenGespeeld, vorigeResultaat, huidigeResultaat, totaalResultaat;
 		
 	public ScoreView(){
@@ -31,9 +32,26 @@ public class ScoreView implements Observer {
 		scoreScene = new Scene(root,400,200);
 		root.getChildren().add(scoreLabel);
 	}
+
+	private void saveStatsSp1(int totaal) {
+		this.spelernr1Tot = totaal;
+	}
+
+	private void saveStatsSp2(int totaal) {
+		this.spelernr2Tot = totaal;
+	}
+
+	private int getStatSp1() {
+		return spelernr1Tot;
+	}
+
+	private int getStatSp2() {
+		return spelernr2Tot;
+	}
+
 	
-	private void voegScoreLijnToe(String scoreLijn){
-		scoreLabel.setText(scoreLabel.getText()+"\n"+scoreLijn);
+	private void voegScoreLijnToe(int statSp3){
+		scoreLabel.setText(scoreLabel.getText() + "\n" + "Beurt 1: sp1: " + getStatSp1() + " sp2: " + getStatSp2() + " sp3: " + statSp3);
 	}
 
 	@Override
@@ -43,6 +61,13 @@ public class ScoreView implements Observer {
 		this.vorigeResultaat = vorigeResultaat;
 		this.huidigeResultaat = huidigeResultaat;
 		this.totaalResultaat = totaalResultaat;
+
+		if (spelerNummer == 1) {
+			this.saveStatsSp1(totaalResultaat);
+		} else if (spelerNummer == 2) {
+			this.saveStatsSp2(totaalResultaat);
+		} else if (spelerNummer == 3) {
+			this.voegScoreLijnToe(totaalResultaat);
+		}
 	}
-	
 }

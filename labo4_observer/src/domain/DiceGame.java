@@ -57,11 +57,5 @@ public class DiceGame {
         p.setTotaalResultaat(p.getTotaalResultaat() + p.getHuidigeBeurt());
         p.setAantalBeurtenGespeeld(p.getAantalBeurtenGespeeld() + 1);
         p.notifyObservers();
-
-        System.out.println("Worp: " + worp);
-        System.out.println("Spelers nummer: " + p.getSpelersnummer());
-        System.out.println("Deze Beurt: " + p.getHuidigeBeurt());
-        System.out.println("Voorlopig Totaal: " + p.getTotaalResultaat());
-        System.out.println("Aantal beurten gespeeld: " + p.getAantalBeurtenGespeeld());
     }
 }
